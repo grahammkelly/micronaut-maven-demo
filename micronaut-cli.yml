@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.travelport.system.team
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [app-name, data, data-mongodb, graalvm, http-client, java, java-application, jetty-server, junit, logback, lombok, management, maven, maven-enforcer-plugin, micrometer, micrometer-observation-http, micronaut-aot, micronaut-http-validation, mongo-sync, properties, readme, serialization-jackson, shade, test-resources, testcontainers]
