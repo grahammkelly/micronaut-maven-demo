@@ -1,0 +1,16 @@
+micronaut:
+  application:
+    name: system-team-maven-micronaut-demo
+  server:
+    port: 8080
+  metrics:
+    enabled: true
+
+micrometer:
+  observation:
+    enabled: true
+    http:
+      server:
+        enabled: true
+      client:
+        enabled: true
