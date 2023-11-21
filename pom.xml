@@ -12,6 +12,7 @@
     <artifactId>micronaut-parent</artifactId>
     <version>4.2.0</version>
   </parent>
+
   <properties>
     <packaging>jar</packaging>
     <jdk.version>17</jdk.version>
@@ -123,6 +124,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
