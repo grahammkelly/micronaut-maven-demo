@@ -14,3 +14,8 @@ micrometer:
         enabled: true
       client:
         enabled: true
+
+endpoints:
+  all:
+    enabled: true
+    sensitive: false
