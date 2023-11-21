@@ -49,7 +49,6 @@ public class PersonController {
       super("Cannot find id '" + id + "' - " + additionalMsg);
       this.id = id;
     }
-
   }
 
   private final PersonService personService;
@@ -119,7 +118,7 @@ public class PersonController {
       @Tag(name = "byLastname")
   })
   @Get("/lastname")
-  public List<Person>findAllWithLastName(@QueryValue("names") @NotNull @NotEmpty final List<String> lastNames) {
+  public List<Person> findAllWithLastName(@QueryValue("names") @NotNull @NotEmpty final List<String> lastNames) {
     final List<Person> people = personService.findByLastNameIn(lastNames);
     if (log.isDebugEnabled()) {
       log.debug("Looking for [{}] - found {} entries: {}",
@@ -175,7 +174,8 @@ public class PersonController {
   })
   @Post("/{id}")
   @Status(HttpStatus.ACCEPTED)
-  public Person updatePerson(@PathVariable("id") final String id, @Valid @NotNull final Person person) throws PersonNotFound {
+  public Person updatePerson(@PathVariable("id") final String id, @Valid @NotNull final Person person)
+      throws PersonNotFound {
     final Person updated = personService.save(personService.findById(id)
         .orElseThrow(() ->new PersonNotFound(id, "unable to update"))
         .updateWith(person));
@@ -219,5 +219,4 @@ public class PersonController {
   public String personNotFound(final PersonNotFound e) {
     return e.getMessage();
   }
-
 }

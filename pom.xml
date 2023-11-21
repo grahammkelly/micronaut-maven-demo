@@ -169,12 +169,6 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>io.opentelemetry.instrumentation</groupId>
-      <artifactId>opentelemetry-logback-appender-1.0</artifactId>
-      <version>${otel-logback.version}</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
       <groupId>io.swagger.core.v3</groupId>
       <artifactId>swagger-annotations</artifactId>
       <version>${swagger-annotations.version}</version>
