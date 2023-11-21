@@ -23,6 +23,15 @@
     <micronaut.aot.packageName>com.travelport.system.team.aot.generated</micronaut.aot.packageName>
     <micronaut.runtime>jetty</micronaut.runtime>
     <exec.mainClass>com.travelport.system.team.Application</exec.mainClass>
+
+    <guava.version>31.0.1-jre</guava.version>
+    <jakarta-validation.version>3.0.2</jakarta-validation.version>
+    <logbackJson.version>0.1.5</logbackJson.version>
+    <otel-api.version>1.0.1</otel-api.version>
+    <otel-logback.version>1.32.0-alpha</otel-logback.version>
+    <slf4j.version>2.0.7</slf4j.version>
+    <swagger.version>4.9.2</swagger.version>
+    <swagger-annotations.version>2.1.0</swagger-annotations.version>
   </properties>
 
   <repositories>
@@ -123,7 +132,18 @@
       <artifactId>testcontainers</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.micronaut.openapi</groupId>
+      <artifactId>micronaut-openapi</artifactId>
+      <version>${swagger.version}</version>
+    </dependency>
 
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>org.yaml</groupId>
       <artifactId>snakeyaml</artifactId>
@@ -133,25 +153,47 @@
     <dependency>
       <groupId>ch.qos.logback.contrib</groupId>
       <artifactId>logback-json-classic</artifactId>
-      <version>0.1.5</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.opentelemetry.instrumentation</groupId>
-      <artifactId>opentelemetry-logback-appender-1.0</artifactId>
-      <version>1.32.0-alpha</version>
+      <version>${logbackJson.version}</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>io.opentelemetry</groupId>
       <artifactId>opentelemetry-api</artifactId>
-      <version>1.0.1</version>
+      <version>${otel-api.version}</version>
       <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry.instrumentation</groupId>
+      <artifactId>opentelemetry-logback-appender-1.0</artifactId>
+      <version>${otel-logback.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry.instrumentation</groupId>
+      <artifactId>opentelemetry-logback-appender-1.0</artifactId>
+      <version>${otel-logback.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations</artifactId>
+      <version>${swagger-annotations.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+      <version>${jakarta-validation.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <!-- Micronaut AOT -->
       <plugin>
         <groupId>io.micronaut.maven</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
@@ -159,10 +201,12 @@
             <configFile>aot-${packaging}.properties</configFile>
           </configuration>
       </plugin>
+      <!-- Enforcer -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
+      <!-- Maven compiler (preprocessors) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -175,6 +219,11 @@
               <groupId>org.projectlombok</groupId>
               <artifactId>lombok</artifactId>
               <version>${lombok.version}</version>
+            </path>
+            <path>
+              <groupId>io.swagger.core.v3</groupId>
+              <artifactId>swagger-annotations</artifactId>
+              <version>${swagger-annotations.version}</version>
             </path>
             <path>
               <groupId>io.micronaut</groupId>
