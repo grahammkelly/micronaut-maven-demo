@@ -1,4 +1,4 @@
-package com.travelport.system.team.service;
+package com.demo.micronaut.service;
 
 // import com.travelport.system.team.repository.PersonRepository;
 // import io.micronaut.test.annotation.MockBean;
@@ -6,8 +6,8 @@ package com.travelport.system.team.service;
 
 // import static org.junit.jupiter.api.Assertions.*;
 
-import com.travelport.system.team.model.Person;
-import com.travelport.system.team.repository.PersonRepository;
+import com.demo.micronaut.repository.PersonRepository;
+import com.demo.micronaut.model.Person;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

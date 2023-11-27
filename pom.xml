@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.travelport.system.team</groupId>
-  <artifactId>system-team-maven-micronaut-demo</artifactId>
+  <artifactId>micronaut-maven-demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>${packaging}</packaging>
 
@@ -22,7 +22,7 @@
     <micronaut.aot.enabled>false</micronaut.aot.enabled>
     <micronaut.aot.packageName>com.travelport.system.team.aot.generated</micronaut.aot.packageName>
     <micronaut.runtime>jetty</micronaut.runtime>
-    <exec.mainClass>com.travelport.system.team.Application</exec.mainClass>
+    <exec.mainClass>com.demo.micronaut.Application</exec.mainClass>
 
     <guava.version>32.0.0-jre</guava.version>
     <jakarta-validation.version>3.0.2</jakarta-validation.version>
