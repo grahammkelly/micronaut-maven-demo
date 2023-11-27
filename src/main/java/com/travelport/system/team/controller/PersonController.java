@@ -66,7 +66,7 @@ public class PersonController {
         person -> log.info("Looking for id '{}' - found {}", id, person),
         () -> log.info("Id '{}' does not exist", id)
     );
-    return found.orElseThrow(() ->new PersonNotFound(id));
+    return found.orElseThrow(() -> new PersonNotFound(id));
   }
 
   @Operation(summary = "Finds all `Person` entries")
@@ -166,7 +166,7 @@ public class PersonController {
   public Person updatePerson(@PathVariable("id") final String id, @Valid @NotNull final Person person)
       throws PersonNotFound {
     final Person updated = personService.save(personService.findById(id)
-        .orElseThrow(() ->new PersonNotFound(id, "unable to update"))
+        .orElseThrow(() -> new PersonNotFound(id, "unable to update"))
         .updateWith(person));
     if (log.isDebugEnabled()) {
       log.debug("Updated '{}' to {}", id, updated);
