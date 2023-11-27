@@ -32,10 +32,8 @@ public class Person {
 
   int age;
 
-  @Nullable
   String dob;
 
-  @Nullable
   String middleName;
 
   @Override

@@ -1,8 +1,10 @@
 package com.travelport.system.team.controller;
 
+import com.travelport.system.team.exceptions.PersonNotFound;
 import com.travelport.system.team.model.Person;
 import com.travelport.system.team.service.PersonService;
 import io.micronaut.http.HttpStatus;
+import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Error;
@@ -37,20 +39,6 @@ import java.util.Optional;
 @ExecuteOn(TaskExecutors.IO)  //Make sure the controller is executed on a non-main thread pool so it does not block
 @Slf4j
 public class PersonController {
-  @Getter
-  private static class PersonNotFound extends Exception {
-    @Getter private final String id;
-    public PersonNotFound(String id) {
-      super("Cannot find id '" + id + "'");
-      this.id = id;
-    }
-
-    public PersonNotFound(String id, String additionalMsg) {
-      super("Cannot find id '" + id + "' - " + additionalMsg);
-      this.id = id;
-    }
-
-  }
 
   private final PersonService personService;
 
@@ -78,7 +66,7 @@ public class PersonController {
         person -> log.info("Looking for id '{}' - found {}", id, person),
         () -> log.info("Id '{}' does not exist", id)
     );
-    return found.orElseThrow(() ->new PersonNotFound(id));
+    return found.orElseThrow(() -> new PersonNotFound(id));
   }
 
   @Operation(summary = "Finds all `Person` entries")
@@ -119,7 +107,7 @@ public class PersonController {
       @Tag(name = "byLastname")
   })
   @Get("/lastname")
-  public List<Person>findAllWithLastName(@QueryValue("names") @NotNull @NotEmpty final List<String> lastNames) {
+  public List<Person> findAllWithLastName(@QueryValue("names") @NotNull @NotEmpty final List<String> lastNames) {
     final List<Person> people = personService.findByLastNameIn(lastNames);
     if (log.isDebugEnabled()) {
       log.debug("Looking for [{}] - found {} entries: {}",
@@ -145,7 +133,7 @@ public class PersonController {
       @Tag(name = "create"),
       @Tag(name = "add")
   })
-  @Post
+  @Post(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
   @Status(HttpStatus.CREATED)
   public Person addPerson(@Valid @NotNull final Person person) {
     final Person p = personService.save(person);
@@ -175,9 +163,10 @@ public class PersonController {
   })
   @Post("/{id}")
   @Status(HttpStatus.ACCEPTED)
-  public Person updatePerson(@PathVariable("id") final String id, @Valid @NotNull final Person person) throws PersonNotFound {
+  public Person updatePerson(@PathVariable("id") final String id, @Valid @NotNull final Person person)
+      throws PersonNotFound {
     final Person updated = personService.save(personService.findById(id)
-        .orElseThrow(() ->new PersonNotFound(id, "unable to update"))
+        .orElseThrow(() -> new PersonNotFound(id, "unable to update"))
         .updateWith(person));
     if (log.isDebugEnabled()) {
       log.debug("Updated '{}' to {}", id, updated);
@@ -208,16 +197,4 @@ public class PersonController {
     }
     return toDelete;
   }
-
-  /**
-   * Handles {@link PersonNotFound} exceptions.
-   *
-   * @param e the exception
-   * @return the error message
-   */
-  @Error(exception = PersonNotFound.class, status = HttpStatus.I_AM_A_TEAPOT)
-  public String personNotFound(final PersonNotFound e) {
-    return e.getMessage();
-  }
-
 }

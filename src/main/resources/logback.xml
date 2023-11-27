@@ -15,20 +15,13 @@
             <pattern>%cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n</pattern>
         </encoder>
     </appender>
-
-    <!-- Log the OpenTelemetry traces in the MDC for all sub appenders -->
-    <appender name="OTEL" class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
-        <!-- defaults to JSON format, set 'LOG_TARGET' to STDOUT to use the STDOUT appender -->
-        <appender-ref ref="${LOG_TARGET:-JSON}"/>
-    </appender>
-
     <logger name="com.travelport.system.team" level="TRACE"/>
     <logger name="org.mongodb.driver.connection" level="INFO"/>
     <logger name="org.testcontainers" level="ERROR"/>
     <logger name="io.micronaut.testresources" level="ERROR"/>
 
     <root level="WARN">
-        <appender-ref ref="OTEL" />
+        <appender-ref ref="JSON" />
     </root>
 
 </configuration>
