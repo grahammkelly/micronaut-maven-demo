@@ -29,7 +29,7 @@
     <logbackJson.version>0.1.5</logbackJson.version>
     <otel-api.version>1.0.1</otel-api.version>
     <otel-logback.version>1.32.0-alpha</otel-logback.version>
-    <slf4j.version>2.0.7</slf4j.version>
+    <slf4j.version>2.0.9</slf4j.version>
     <swagger.version>4.9.2</swagger.version>
     <swagger-annotations.version>2.1.0</swagger-annotations.version>
   </properties>
