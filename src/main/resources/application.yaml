@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: system-team-maven-micronaut-demo
+    name: system-team-micronaut-demo
   server:
     port: 8080
   metrics:
