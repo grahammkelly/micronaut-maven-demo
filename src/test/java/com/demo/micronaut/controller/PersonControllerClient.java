@@ -1,9 +1,9 @@
-package com.travelport.system.team.controller;
+package com.demo.micronaut.controller;
 
+import com.demo.micronaut.service.PersonService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.travelport.system.team.model.Person;
-import com.travelport.system.team.service.PersonService;
+import com.demo.micronaut.model.Person;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
@@ -14,7 +14,6 @@ import io.micronaut.http.client.exceptions.HttpClientResponseException;
 import io.micronaut.test.annotation.MockBean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,7 +42,8 @@ public class PersonControllerClient {
   @Inject @Client("/people")
   HttpClient client;
 
-  @Inject PersonService personSvc;
+  @Inject
+  PersonService personSvc;
   final PersonService mock = mock(PersonService.class);
   @MockBean(PersonService.class)
   PersonService personSvc() {

@@ -1,8 +1,8 @@
-# System team Micronaut demo
+# Micronaut (maven) demo
 
-Demonstration of the standard System team demos, for Micronaut.
+Demonstration of a Micronaut service.
 
-To run the application and have changes auto-reloadgit , use `./mvnw mn:run`.
+To run the application and have changes auto-reload, use `./mvnw mn:run`.
 
 Tests can run against MongoDB, using the `testcontainers` library, or against an in-memory database. Use of the `testcontainers` library means that the application spins up docker containers for MongoDB, and the tests connect to that. This is the default behaviour. _Please be aware_, this means you MUST have docker desktop running if testing on Mac.
 

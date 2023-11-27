@@ -1,4 +1,4 @@
-package com.travelport.system.team.exceptions;
+package com.demo.micronaut.exceptions;
 
 import lombok.Getter;
 

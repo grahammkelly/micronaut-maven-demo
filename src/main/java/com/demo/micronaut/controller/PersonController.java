@@ -1,13 +1,12 @@
-package com.travelport.system.team.controller;
+package com.demo.micronaut.controller;
 
-import com.travelport.system.team.exceptions.PersonNotFound;
-import com.travelport.system.team.model.Person;
-import com.travelport.system.team.service.PersonService;
+import com.demo.micronaut.exceptions.PersonNotFound;
+import com.demo.micronaut.model.Person;
+import com.demo.micronaut.service.PersonService;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Delete;
-import io.micronaut.http.annotation.Error;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
@@ -29,7 +28,6 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;

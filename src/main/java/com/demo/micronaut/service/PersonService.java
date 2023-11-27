@@ -1,8 +1,8 @@
-package com.travelport.system.team.service;
+package com.demo.micronaut.service;
 
+import com.demo.micronaut.repository.PersonRepository;
 import com.google.common.collect.Streams;
-import com.travelport.system.team.model.Person;
-import com.travelport.system.team.repository.PersonRepository;
+import com.demo.micronaut.model.Person;
 import jakarta.inject.Singleton;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.travelport.system.team;
+package com.demo.micronaut;
 
 import io.micronaut.runtime.Micronaut;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;

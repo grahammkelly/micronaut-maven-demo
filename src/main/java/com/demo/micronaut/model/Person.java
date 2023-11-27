@@ -1,4 +1,4 @@
-package com.travelport.system.team.model;
+package com.demo.micronaut.model;
 
 import com.google.common.base.MoreObjects;
 import io.micronaut.data.annotation.GeneratedValue;
@@ -10,8 +10,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import javax.annotation.Nullable;
 
 @MappedEntity
 @Data

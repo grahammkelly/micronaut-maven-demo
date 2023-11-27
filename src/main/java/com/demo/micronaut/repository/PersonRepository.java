@@ -1,6 +1,6 @@
-package com.travelport.system.team.repository;
+package com.demo.micronaut.repository;
 
-import com.travelport.system.team.model.Person;
+import com.demo.micronaut.model.Person;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.data.mongodb.annotation.MongoRepository;
 import io.micronaut.data.repository.CrudRepository;
