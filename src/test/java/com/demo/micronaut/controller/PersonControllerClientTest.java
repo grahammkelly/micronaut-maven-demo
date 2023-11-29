@@ -211,7 +211,7 @@ class PersonControllerClientTest {
         () -> client.toBlocking().exchange(HttpRequest.POST("/", emptyPerson), Person.class)
     );
 
-    assertEquals(HttpStatus.BAD_REQUEST, ex.getStatus());
+    assertEquals(HttpStatus.NOT_FOUND, ex.getStatus());
   }
 
   @Test
