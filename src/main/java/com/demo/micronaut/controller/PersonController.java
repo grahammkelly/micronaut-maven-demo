@@ -5,6 +5,7 @@ import com.demo.micronaut.model.Person;
 import com.demo.micronaut.service.PersonService;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
@@ -133,7 +134,7 @@ public class PersonController {
   })
   @Post(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
   @Status(HttpStatus.CREATED)
-  public Person addPerson(@Valid @NotNull final Person person) {
+  public Person addPerson(@Valid @NotNull @Body final Person person) {
     final Person p = personService.save(person);
     if (log.isDebugEnabled()) {
       log.debug("Added {}, there are now {} people in the database", p, personService.count());
@@ -161,7 +162,7 @@ public class PersonController {
   })
   @Post("/{id}")
   @Status(HttpStatus.ACCEPTED)
-  public Person updatePerson(@PathVariable("id") final String id, @Valid @NotNull final Person person)
+  public Person updatePerson(@PathVariable("id") final String id, @Valid @NotNull @Body final Person person)
       throws PersonNotFound {
     final Person updated = personService.save(personService.findById(id)
         .orElseThrow(() -> new PersonNotFound(id, "unable to update"))
