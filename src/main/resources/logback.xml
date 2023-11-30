@@ -15,7 +15,7 @@
             <pattern>%cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n</pattern>
         </encoder>
     </appender>
-    <logger name="com.travelport.system.team" level="TRACE"/>
+    <logger name="com.demo.micronaut" level="TRACE"/>
     <logger name="org.mongodb.driver.connection" level="INFO"/>
     <logger name="org.testcontainers" level="ERROR"/>
     <logger name="io.micronaut.testresources" level="ERROR"/>
