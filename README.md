@@ -8,7 +8,18 @@ Tests can run against MongoDB, using the `testcontainers` library, or against an
 
 ## Native compilation
 
-You can compile into native code using `./mvnw package -Dpackaging=native-image`. **However**, be aware, the testcontainers library is not supported by GraalVM, so the tests will fail against the native application, _and_ if you run the application natively, without redirecting the application config to use a 'real' MongoDB instance (either hosted seperately, or in-memory), the service will startup, however there may be no functionality.
+You can compile into native code using `./mvnw package -Dpackaging=native-image`. 
+
+!!! warning "Issues with native images" 
+
+    Please be aware, certain features WILL NOT work on the native image
+    * The testcontainers library is not supported by GraalVM, so the tests will fail against the native application.
+
+        If you run the application natively, without redirecting the application config to use a 'real' MongoDB instance (either hosted seperately, or in-memory), the service will startup, however there may be no functionality.
+    * The `micronaut-aot` library is not supported by GraalVM, so AOT compilation will fail.
+    * There are problems loading the logging libraries at runtime. Currently, you receive errors when running the native image if logs are configured to output in JSON format.  
+
+ALso, be aware, the native compilation takes a long time, and uses a lot of memory. It is recommended to use a machine with at least 16GB of RAM, and to use the `--no-fallback` option to the native-image command, to reduce the memory footprint of the resulting binary.
 
 ---
 
