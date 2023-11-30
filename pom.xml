@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.travelport.system.team</groupId>
+  <groupId>com.demo.micronaut</groupId>
   <artifactId>micronaut-maven-demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>${packaging}</packaging>
@@ -20,7 +20,7 @@
     <micronaut.version>4.2.0</micronaut.version>
     <micronaut.test.resources.enabled>true</micronaut.test.resources.enabled>
     <micronaut.aot.enabled>false</micronaut.aot.enabled>
-    <micronaut.aot.packageName>com.travelport.system.team.aot.generated</micronaut.aot.packageName>
+    <micronaut.aot.packageName>com.demo.micronaut.aot.generated</micronaut.aot.packageName>
     <micronaut.runtime>jetty</micronaut.runtime>
     <exec.mainClass>com.demo.micronaut.Application</exec.mainClass>
 
@@ -275,8 +275,8 @@
             </path>
           </annotationProcessorPaths>
           <compilerArgs>
-            <arg>-Amicronaut.processing.group=com.travelport.system.team</arg>
-            <arg>-Amicronaut.processing.module=system-team-maven-micronaut-demo</arg>
+            <arg>-Amicronaut.processing.group=com.demo.micronaut</arg>
+            <arg>-Amicronaut.processing.module=micronaut-maven-demo</arg>
           </compilerArgs>
         </configuration>
       </plugin>
