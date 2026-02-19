@@ -1,5 +1,5 @@
 applicationType: default
-defaultPackage: com.travelport.system.team
+defaultPackage: com.demo.micronaut
 testFramework: junit
 sourceLanguage: java
 buildTool: maven
