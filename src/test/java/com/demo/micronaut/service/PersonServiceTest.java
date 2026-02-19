@@ -1,11 +1,5 @@
 package com.demo.micronaut.service;
 
-// import com.travelport.system.team.repository.PersonRepository;
-// import io.micronaut.test.annotation.MockBean;
-// import org.junit.jupiter.api.BeforeEach;
-
-// import static org.junit.jupiter.api.Assertions.*;
-
 import com.demo.micronaut.repository.PersonRepository;
 import com.demo.micronaut.model.Person;
 import org.junit.jupiter.api.DisplayName;
